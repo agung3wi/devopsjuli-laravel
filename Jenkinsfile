@@ -18,8 +18,13 @@ node {
 
     // Deploy
     stage("Deploy"){
-        docker.image('ubuntu').inside('-u root') {
-            sh 'echo "Ini adalah deploy"'
+        // deploy env dev
+        docker.image('agung3wi/alpine-rsync:1.1').inside('-u root') {
+            sshagent (credentials: ['ssh-dev']) {
+                sh 'mkdir -p ~/.ssh'
+                sh 'ssh-keyscan -H "52.221.180.133" > ~/.ssh/known_hosts'
+                sh "rsync -rav --delete ./ ubuntu@52.221.180.133:/home/ubuntu/dev.kelasdevops.xyz/ --exclude=.env --exclude=storage --exclude=public/upload --exclude=.git"
+            }
         }
     }
 }
