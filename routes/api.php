@@ -27,7 +27,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Route::patch("/pelanggan/{id}", [PelangganController::class, "update"]);
 // Route::delete("/pelanggan/{id}", [PelangganController::class, "destroy"]);
 
-Route::resource('/pelanggan', PelangganController::class)->middleware("auth.rest");
+Route::resource('/pelanggan', PelangganController::class);
 
 
 Route::group([
