@@ -11,8 +11,8 @@ node {
 
     // Testing
     stage("Test"){
-        docker.image('ubuntu').inside('-u root') {
-            sh 'echo "Ini adalah test"'
+        docker.image('php:7.4-cli').inside('-u root') {
+            sh 'php artisan test --testsuite Unit'
         }
     }
 
