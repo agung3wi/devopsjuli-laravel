@@ -113,6 +113,13 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+
+        'logstash' => [
+            'driver' => 'custom',
+            'via'    => \App\LogstashLogger::class,
+            'host'   => env('LOGSTASH_HOST', '127.0.0.1'),
+            'port'   => env('LOGSTASH_PORT', 4718),
+        ],
     ],
 
 ];

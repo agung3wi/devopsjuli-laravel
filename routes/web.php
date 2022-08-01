@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Session;
 */
 
 Route::get('/', function () {
+    Log::debug("mengakses halaman home");
     return view('welcome');
 });
 
